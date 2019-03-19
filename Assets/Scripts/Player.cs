@@ -14,10 +14,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
+        Move();
+        Shoot();
     }
 
-    void MovePlayer()
+    void Move()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -30,11 +31,21 @@ public class Player : MonoBehaviour
             this.transform.position = position;
         }
         //CLAMPS
-        if (this.transform.position.x < -65)  {
+        if (this.transform.position.x < -65)
+        {
             this.transform.position = this.transform.position;
         }
-        if (this.transform.position.x > 65)  {
+        if (this.transform.position.x > 65)
+        {
             this.transform.position = this.transform.position;
+        }
+    }
+
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Disparo!");
         }
     }
 }
