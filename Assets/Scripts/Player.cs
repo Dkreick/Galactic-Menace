@@ -45,7 +45,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Disparo!");
+            GameObject bullet = Instantiate(Resources.Load("Bullet", typeof(GameObject))) as GameObject;
+            bullet.transform.SetParent(gameObject.transform);
+            bullet.transform.position = gameObject.transform.position;
+            bullet.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
