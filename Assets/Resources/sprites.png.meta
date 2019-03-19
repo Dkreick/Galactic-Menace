@@ -19,6 +19,7 @@ TextureImporter:
     21300028: impact2
     21300030: impact3
     21300032: enemyBullet
+    21300034: life
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -462,13 +463,33 @@ TextureImporter:
         width: 6
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 48e2e06e74b1a0343b2b58eb21bf8869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8120148daa58fe4ea25e7ff6c6cddfc
       vertices: []
       indices: 
       edges: []

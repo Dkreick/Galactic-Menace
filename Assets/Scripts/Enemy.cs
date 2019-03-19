@@ -33,10 +33,10 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-            GameObject bullet = Instantiate(Resources.Load("EnemyBullet", typeof(GameObject))) as GameObject;
-            bullet.transform.SetParent(gameObject.transform);
-            bullet.transform.position = gameObject.transform.position;
-            bullet.transform.localScale = new Vector3(1, 1, 1);
+        GameObject bullet = Instantiate(Resources.Load("EnemyBullet", typeof(GameObject))) as GameObject;
+        bullet.transform.SetParent(gameObject.transform);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void TakeDamage()

@@ -30,6 +30,17 @@ public class Player : MonoBehaviour
             position.x += speed;
             this.transform.position = position;
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 0f)
+            {
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                Time.timeScale = 0f;
+            }
+        }
         //CLAMPS
         if (this.transform.position.x < -65)
         {

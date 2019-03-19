@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletEnemy : MonoBehaviour
 {
     Vector3 position;
     public float speed;
@@ -17,18 +17,18 @@ public class Bullet : MonoBehaviour
         Move();
     }
 
-/*     void OnCollisionEnter (Collision2D col)
+    void OnCollisionEnter (Collision col)
     {
         Debug.Log("CHOCO!");
         Destroy(col.gameObject);
-    } */
+    }
 
     void Move()
     {
-        position.y += speed;
+        position.y -= speed;
         this.transform.position = position;
 
-        if (transform.position.y > 400)
+        if (transform.position.y < -400)
         {
             Destroy(gameObject);
         }
