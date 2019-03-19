@@ -16,8 +16,9 @@ public class Enemy : MonoBehaviour
         secondarySprite = SpriteAtlas.dictSprites["enemy" + randomNumber + "_1"];
         GetComponent<Image>().sprite = primarySprite;
         InvokeRepeating("ChangeSprite", 1, 1);
+        InvokeRepeating("Shoot", 3, 3);
     }
-    
+
     void ChangeSprite()
     {
         if (GetComponent<Image>().sprite == primarySprite)
@@ -28,6 +29,14 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<Image>().sprite = primarySprite;
         }
+    }
+
+    void Shoot()
+    {
+            GameObject bullet = Instantiate(Resources.Load("EnemyBullet", typeof(GameObject))) as GameObject;
+            bullet.transform.SetParent(gameObject.transform);
+            bullet.transform.position = gameObject.transform.position;
+            bullet.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void TakeDamage()

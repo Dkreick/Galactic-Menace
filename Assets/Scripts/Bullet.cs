@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         position = this.transform.position;
-        speed = 2;
     }
 
     // Update is called once per frame
