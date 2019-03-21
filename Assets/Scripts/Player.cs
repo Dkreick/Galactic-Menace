@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
         Shoot();
     }
 
+    void OnCollisionEnter2D(Collision2D col) 
+    {
+        
+    }
+
     void Move()
     {
         if (Input.GetKey(KeyCode.LeftArrow))

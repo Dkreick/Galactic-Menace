@@ -2,33 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class MoveBullet : MonoBehaviour
 {
-    Vector3 position;
     public float speed;
+    private Vector3 position;
 
     void Start()
     {
+        speed = 1.5f;
         position = this.transform.position;
     }
 
     void Update()
     {
-        Move();
-    }
-
-    void OnCollisionEnter2D (Collision2D col)
-    {
-        Debug.Log("CHOCO!");
-        Destroy(col.gameObject);
-    }
-
-    void Move()
-    {
-        position.y += speed;
+        position.y -= speed;
         this.transform.position = position;
 
-        if (transform.position.y > 700)
+        if (transform.position.y < -100)
         {
             Destroy(gameObject);
         }

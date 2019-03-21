@@ -15,7 +15,7 @@ public class Enemies : MonoBehaviour
         speed = 30;
         position = this.transform.position;
         CreateGrid();
-        InvokeRepeating("MoveGrid", 1, 0.5f);
+        InvokeRepeating("MoveGrid", 2, 2);
     }
 
     void CreateGrid()
@@ -31,7 +31,6 @@ public class Enemies : MonoBehaviour
                 if (i == gridArray.GetLength(0) -1)
                 {
                     go.AddComponent<BulletEnemy>();
-                    Debug.Log("Agregame el tiro");
                 }
             }
         }

@@ -6,7 +6,7 @@ public class BulletEnemy : MonoBehaviour
 {
     void Start()
     {
-        InvokeRepeating("Shoot", 3, 3);
+        InvokeRepeating("Shoot", (int)Random.Range(0, 3), (int)Random.Range(1, 3));
     }
 
     void Shoot()
