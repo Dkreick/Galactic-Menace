@@ -32,12 +32,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) 
-    {
+    void OnTriggerEnter2D(Collider2D col) 
+    { 
         health -= 1;
         if (health == 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             GetComponent<Image>().sprite = SpriteAtlas.dictSprites["impact" + randomNumber];
             Destroy(GetComponent<BoxCollider2D>());
         }

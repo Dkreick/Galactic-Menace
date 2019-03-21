@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float speed;
     private Vector3 position;
+    public GameObject livesCount;
+    private int lives;
     
     void Start()
     {
         speed = 1.5f;
+        lives = 3;
         position = this.transform.position;
     }
 
@@ -19,9 +23,15 @@ public class Player : MonoBehaviour
         Shoot();
     }
 
-    void OnCollisionEnter2D(Collision2D col) 
+    void OnTriggerEnter2D(Collider2D col) 
     {
-        
+        lives--;
+        livesCount.GetComponent<Text>().text = "+" + lives;
+        transform.position = new Vector3(0, -300, 0);
+        if(lives == 0) {
+            Destroy(gameObject);
+            // TODO PAUSE GAME
+        }
     }
 
     void Move()
