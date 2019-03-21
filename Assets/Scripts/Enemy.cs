@@ -8,10 +8,11 @@ public class Enemy : MonoBehaviour
     private Sprite primarySprite;
     private Sprite secondarySprite;
     public int health;
+    private int randomNumber;
 
     void Start()
     {
-        int randomNumber = Random.Range(0, 4);
+        randomNumber = Random.Range(0, 4);
         primarySprite = SpriteAtlas.dictSprites["enemy" + randomNumber + "_0"];
         secondarySprite = SpriteAtlas.dictSprites["enemy" + randomNumber + "_1"];
         GetComponent<Image>().sprite = primarySprite;
@@ -36,9 +37,9 @@ public class Enemy : MonoBehaviour
         health -= 1;
         if (health == 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             GetComponent<Image>().sprite = SpriteAtlas.dictSprites["impact" + randomNumber];
-            RemoveComponent<BoxCollider2D>().sprite = primarySprite;
+            Destroy(GetComponent<BoxCollider2D>());
         }
 
         CalculateAdyacentEnemy();
