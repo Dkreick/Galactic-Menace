@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     private Vector3 position;
+    
     void Start()
     {
         speed = 1.5f;

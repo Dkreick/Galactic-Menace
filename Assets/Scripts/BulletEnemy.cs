@@ -4,33 +4,16 @@ using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
 {
-    Vector3 position;
-    public float speed;
-
     void Start()
     {
-        position = this.transform.position;
+        InvokeRepeating("Shoot", 3, 3);
     }
 
-    void Update()
+    void Shoot()
     {
-        Move();
-    }
-
-    void OnCollisionEnter (Collision col)
-    {
-        Debug.Log("CHOCO!");
-        Destroy(col.gameObject);
-    }
-
-    void Move()
-    {
-        position.y -= speed;
-        this.transform.position = position;
-
-        if (transform.position.y < -400)
-        {
-            Destroy(gameObject);
-        }
+        GameObject bullet = Instantiate(Resources.Load("EnemyBullet", typeof(GameObject))) as GameObject;
+        bullet.transform.SetParent(gameObject.transform);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.localScale = new Vector3(1, 1, 1);
     }
 }
