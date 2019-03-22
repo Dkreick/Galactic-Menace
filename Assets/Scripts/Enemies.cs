@@ -28,9 +28,45 @@ public class Enemies : MonoBehaviour
                 go.GetComponent<Image>().SetNativeSize();
                 gridArray[i, j] = go;
 
-                if (i == gridArray.GetLength(0) -1)
+                if (i == gridArray.GetLength(0) - 1)
                 {
                     go.AddComponent<BulletEnemy>();
+                }
+            }
+        }
+    }
+
+    public void CalculateAdyacentEnemy()
+    {
+        for (int i = 0; i < gridArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < gridArray.GetLength(1); j++)
+            {
+                if (gridArray[i, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode)
+                {
+                    Debug.Log(i);
+                    if (i++ < gridArray.GetLength(0))
+                    {
+                        Debug.Log("I" + i++);
+                        Debug.Log("largo" + gridArray.GetLength(0));
+                        if (gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
+                        {
+                            gridArray[i++, j].GetComponent<Enemy>().DisposeEnemy();
+                        }
+                    }
+
+                    /* if (gridArray[i, j++].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
+                    {
+                        gridArray[i, j++].GetComponent<Enemy>().DisposeEnemy();
+                    }
+                    if (gridArray[i--, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
+                    {
+                        gridArray[i--, j].GetComponent<Enemy>().DisposeEnemy();
+                    }
+                    if (gridArray[i, j--].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
+                    {
+                        gridArray[i, j--].GetComponent<Enemy>().DisposeEnemy();
+                    } */
                 }
             }
         }

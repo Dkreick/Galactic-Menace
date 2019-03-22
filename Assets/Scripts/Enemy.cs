@@ -8,16 +8,16 @@ public class Enemy : MonoBehaviour
     private Sprite primarySprite;
     private Sprite secondarySprite;
     public int health;
-    private int randomNumber;
+    public int enemyCode;
 
     void Start()
     {
-        randomNumber = Random.Range(0, 4);
-        primarySprite = SpriteAtlas.dictSprites["enemy" + randomNumber + "_0"];
-        secondarySprite = SpriteAtlas.dictSprites["enemy" + randomNumber + "_1"];
+        enemyCode = Random.Range(0, 4);
+        primarySprite = SpriteAtlas.dictSprites["enemy" + enemyCode + "_0"];
+        secondarySprite = SpriteAtlas.dictSprites["enemy" + enemyCode + "_1"];
         GetComponent<Image>().sprite = primarySprite;
         InvokeRepeating("ChangeSprite", 1, 1);
-        AssignHealth(randomNumber);
+        AssignHealth(enemyCode);
     }
 
     void ChangeSprite()
@@ -32,21 +32,25 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col) 
-    { 
-        health -= 1;
-        if (health == 0)
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "Bullet(Clone)")
         {
-            Destroy(gameObject);
-            GetComponent<Image>().sprite = SpriteAtlas.dictSprites["impact" + randomNumber];
-            Destroy(GetComponent<BoxCollider2D>());
-        }
+            health -= 1;
+            if (health == 0)
+            {
+                DisposeEnemy();
 
-        CalculateAdyacentEnemy();
+            }
+            GetComponentInParent<Enemies>().CalculateAdyacentEnemy();
+        }
     }
 
-    void CalculateAdyacentEnemy() {
-        // TODO
+    public void DisposeEnemy()
+    {
+        CancelInvoke();
+        GetComponent<Image>().sprite = SpriteAtlas.dictSprites["impact" + enemyCode];
+        Destroy(GetComponent<BoxCollider2D>());
     }
 
     void AssignHealth(int number)

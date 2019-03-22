@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         position = this.transform.position;
+        transform.SetParent(GameObject.Find("Canvas").transform);
     }
 
     void Update()
@@ -17,10 +18,12 @@ public class Bullet : MonoBehaviour
         Move();
     }
 
-    void OnCollisionEnter2D (Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("CHOCO!");
-        Destroy(col.gameObject);
+        if (col.gameObject.name != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Move()
