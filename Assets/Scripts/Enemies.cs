@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class Enemies : MonoBehaviour
 {
@@ -16,6 +16,13 @@ public class Enemies : MonoBehaviour
         position = this.transform.position;
         CreateGrid();
         InvokeRepeating("MoveGrid", 2, 2);
+    }
+
+    void Update() {
+        Component[] colliders = GetComponentsInChildren<BoxCollider2D>();
+        if (colliders.Length == 0) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void CreateGrid()
@@ -44,18 +51,11 @@ public class Enemies : MonoBehaviour
             {
                 if (gridArray[i, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode)
                 {
-                    Debug.Log(i);
-                    if (i++ < gridArray.GetLength(0))
+                    if (gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
                     {
-                        Debug.Log("I" + i++);
-                        Debug.Log("largo" + gridArray.GetLength(0));
-                        if (gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
-                        {
-                            gridArray[i++, j].GetComponent<Enemy>().DisposeEnemy();
-                        }
+                        gridArray[i++, j].GetComponent<Enemy>().DisposeEnemy();
                     }
-
-                    /* if (gridArray[i, j++].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
+                    if (gridArray[i, j++].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
                     {
                         gridArray[i, j++].GetComponent<Enemy>().DisposeEnemy();
                     }
@@ -66,7 +66,7 @@ public class Enemies : MonoBehaviour
                     if (gridArray[i, j--].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_0" || gridArray[i++, j].GetComponent<Image>().sprite.name == "impact" + gridArray[i, j].GetComponent<Enemy>().enemyCode + "_1")
                     {
                         gridArray[i, j--].GetComponent<Enemy>().DisposeEnemy();
-                    } */
+                    }
                 }
             }
         }
