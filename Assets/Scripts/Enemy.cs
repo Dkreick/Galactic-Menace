@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private Sprite secondarySprite;
     public int health;
     public int enemyCode;
+    public GameObject scoreCount;
 
     void Start()
     {
@@ -40,7 +41,6 @@ public class Enemy : MonoBehaviour
             if (health == 0)
             {
                 DisposeEnemy();
-
             }
             GetComponentInParent<Enemies>().CalculateAdyacentEnemy();
         }
@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
 
     public void DisposeEnemy()
     {
+        SpriteAtlas.score++;
+        scoreCount.GetComponent<Text>().text = "SCORE: " + SpriteAtlas.score;
         CancelInvoke();
         GetComponent<Image>().sprite = SpriteAtlas.dictSprites["impact" + enemyCode];
         Destroy(GetComponent<BoxCollider2D>());

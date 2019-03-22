@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         {
             lives--;
             livesCount.GetComponent<Text>().text = "X " + lives;
-            transform.position = new Vector3(0, -300, 0);
+            this.transform.position = new Vector3(0, -300, 0);
             if (lives == 0)
             {
                 SceneManager.LoadScene("MainMenu");
