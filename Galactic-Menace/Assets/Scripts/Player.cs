@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         if (col.gameObject.name == "EnemyBullet(Clone)")
         {
             lives--;
-            livesCount.GetComponent<Text>().text = "X " + lives;
+            livesCount.GetComponent<Text>().text = "LIves: " + lives;
             this.transform.position = new Vector3(0, -300, 0);
             if (lives == 0)
             {
