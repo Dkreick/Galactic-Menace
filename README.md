@@ -1,6 +1,6 @@
 # Galactic Menace
 
-<p align="center"><img src="https://img.shields.io/badge/Version-2018.2.17-blue.svg"/> <img src="https://img.shields.io/badge/Status-Not Deployed-red.svg"/> <img src="https://img.shields.io/badge/Contribuitors-Welcome-blue.svg"/> <img src="https://img.shields.io/badge/Build Version-1.0-orange.svg"/></p> 
+<p align="center"><img src="https://img.shields.io/badge/Version-2018.2.17-blue.svg"/> <img src="https://img.shields.io/badge/Status-Not Deployed-red.svg"/> <img src="https://img.shields.io/badge/Contribuitors-Welcome-blue.svg"/> <img src="https://img.shields.io/badge/Build Version-2.0-darkgreen.svg"/></p> 
 
 #### Small Match3 like game made in Unity3D
 
@@ -18,13 +18,14 @@
 ## Preview image  
 
 <p align="center">
-  <img src="https://github.com/Dkreick/Scan-My-Profile/blob/master/Scan%20My%20Profile/Assets/Assets/Images/ProfileImage.jpeg" width="350" height="350">
+  <img src="./Snapshot.jpg" width="640" height="480">
 </p>
-
 
 ## Controls
 
-// TODO
+* Use arrow keys to navigate though the screen
+
+* Spacebar to shoot
 
 ## Credits / More about me
 
