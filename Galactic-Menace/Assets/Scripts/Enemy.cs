@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        enemyCode = Random.Range(0, 4);
+        enemyCode = Random.Range(0, 5);
         primarySprite = SpriteAtlas.dictSprites["enemy" + enemyCode + "_0"];
         secondarySprite = SpriteAtlas.dictSprites["enemy" + enemyCode + "_1"];
         GetComponent<Image>().sprite = primarySprite;

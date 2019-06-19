@@ -13,7 +13,7 @@ public class SpriteAtlas : MonoBehaviour
     void Start()
     {
         score = 0;
-        sprites = Resources.LoadAll<Sprite>("sprites");
+        sprites = Resources.LoadAll<Sprite>("SpriteSheet");
 
         foreach (Sprite sprite in sprites)
         {
